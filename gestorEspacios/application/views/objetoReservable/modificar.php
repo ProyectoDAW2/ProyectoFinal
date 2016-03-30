@@ -5,7 +5,7 @@
 		
 
 
-<label>Id</label> <input type="text" name="id"><br>
+<input type="text" name="id" value="<?= $idUsuario ?>" hidden><br>
 <label>Nombre</label> <input type="text" name="nombre"><br>
 <label>Tipo</label> <input type="text" name="tipo"><br>
 <label>Número de Aula</label> <input type="text" name="num_aula"><br>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 class ObjetoReservable extends CI_Controller{
 	
 	public function index(){
@@ -6,7 +7,26 @@ class ObjetoReservable extends CI_Controller{
 	}
 
 	public function modificar(){
-		$this->load->view('objetoReservable/modificar');
+		$id=isset($_SESSION['idUsuario']) ? $_SESSION['idUsuario']:null;
+		$datos['idUsuario']= $id;
+		
+		if($id!=null)
+		{
+			if($id==1)
+			{
+				
+				$this->load->view('objetoReservable/modificar', $datos);
+			}
+			else
+			{
+				$this->load->view('errors/accesoProhibido', $datos);
+			}
+		}
+		else
+		{
+			$this->load->view('errors/accesoProhibido', $datos);
+		}
+		
 	}
 	public function crear(){
 		$this->load->view('objetoReservable/crear');
