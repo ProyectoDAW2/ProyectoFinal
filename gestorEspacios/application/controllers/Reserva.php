@@ -55,11 +55,43 @@ class Reserva extends CI_Controller
 		$reservas= $this->mr->getTodos($idUsuario);
 		$datos['reservas']= $reservas;
 	
-	
 		$this->load->view('reserva/listarPost', $datos);
 	}
 	
+	public function filtrar()
+	{
+		$this->load->model('Model_ObjetoReservable', 'mo');
+		$categorias= $this->mo->getCategoria();
+		$datos['categorias']= $categorias;
+		$this->load->view('reserva/filtrado', $datos);
+		
+	}
 	
+	public function filtrarPost()
+	{
+		$categoria= $_REQUEST['categoria'];
+		$red= isset($_REQUEST['red']) ? $_REQUEST['red']:'NO';
+		$proyector= isset($_REQUEST['proyector']) ? $_REQUEST['proyector']:'NO';
+		$numEquipos= $_REQUEST['equipos'];
+		$capacidad= $_REQUEST['capacidad'];
+		
+		if($red!='NO')
+		{
+			$red='SI';
+		}
+		
+		if($proyector!='NO')
+		{
+			$proyector= 'SI';
+		}
+		
+		$this->load->model('Model_ObjetoReservable', 'mo');
+		$resultado= $this->mo->getAulasDisponibles($categoria, $red, $proyector, $numEquipos, $capacidad);
+		
+		$datos['aulas']= $resultado;
+		$this->load->view('reserva/filtradoPost', $datos); 
+		
+	}
 	
 }
 	

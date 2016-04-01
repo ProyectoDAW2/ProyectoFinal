@@ -42,5 +42,15 @@ class Model_ObjetoReservable extends RedBean_SimpleModel{
 		R::trash($reserva);
 	}
 	
+	public function getCategoria()
+	{
+		return R::getAll("SELECT DISTINCT categoria FROM objetoreservable");
+	}
+	
+	public function getAulasDisponibles($categoria, $red, $proyector, $numEquipos, $capacidad)
+	{
+		return R::find('objetoreservable', "categoria LIKE $categoria"); 
+	}
+	
 }
 ?>
