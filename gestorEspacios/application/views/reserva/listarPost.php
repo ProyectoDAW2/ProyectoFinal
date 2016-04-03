@@ -5,6 +5,7 @@
 </head>
 
 <body>
+<?php var_dump($reservas);?>
 <table border="1">
 <tr>
 <td><b>Nombre Usuario</b></td>

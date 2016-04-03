@@ -1,8 +1,46 @@
 <html>
 <head>
+<!--<script type="text/javascript" src="http://form-serialize.googlecode.com/svn/trunk/serialize-0.2.min.js" ></script>
+-->
+ <script >
+	
+var conexion;
+
+function accionAJAX() {
+	document.getElementById("aulas").innerHTML=conexion.responseText;
+}
+
+
+	
+	function verOR() {
+		
+		var categoria=document.getElementById('categoria').value;
+		var red=document.getElementById('red').value;
+		var proyector=document.getElementById('proyector').value;
+		conexion = new XMLHttpRequest();
+		
+		conexion.open('POST', '<?= base_url('reserva/filtrarPost')?>', true);
+		conexion.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		conexion.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
+		conexion.send('categoria='+categoria+"&red="+red+"&proyector="+proyector);
+	
+		
+		conexion.onreadystatechange = function() {
+			if (conexion.readyState==4 && conexion.status==200) {
+				accionAJAX();
+			}
+		}
+	}
+	
+
+
+
+
+		
+</script>  
 	<meta charset="utf-8">
-    
-    <style type="text/css">
+   
+<!--     <style type="text/css">
         fieldset
         {
             width: 150px;
@@ -20,8 +58,8 @@
   	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
   	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-    
-  	<script>
+ 
+<!--  	<script>
   	$(function() {
     	$( "#sliderEquipos" ).slider({
      		value:0,
@@ -46,14 +84,14 @@
     	$( "#capacidad" ).val($( "#sliderCapacidad" ).slider( "value" ) );
   	});
 
-  	</script>
+  	</script>-->
 </head>
 <body>
-<form action="<?=base_url('reserva/filtrarPost')?>" method="post">
+
 	<fieldset>
 		<h3>Filtrado</h3>
 		Categor&iacute;a 
-		<select name="categoria">
+		<select name="categoria" id="categoria">
 			<option value="todas">Todas</option>
 			<?php foreach ($categorias as $categoria):?>
 				<?php foreach($categoria as $categ=>$nombre): ?>
@@ -62,9 +100,9 @@
 		<?php endforeach;?>
 		</select><br><br>
 		
-        Red <input type="checkbox" name="red"/><br>
-		Proyector <input type="checkbox" name="proyector"/>
-        
+        Red <input type="checkbox" name="red" id="red" /><br>
+		Proyector <input type="checkbox" name="proyector" id="proyector" />
+         <!-- 
 		<p>
   			<label for="equipos">N&uacute;mero de equipos:</label>
   			<input type="text" id="equipos" name="equipos" readonly style="border:0; color:#f6931f; font-weight:bold;">
@@ -77,18 +115,18 @@
   			<input type="text" id="capacidad" name="capacidad" readonly style="border:0; color:#f6931f; font-weight:bold;">
 		</p>
  
-		<div id="sliderCapacidad"></div><br><br>
+		<div id="sliderCapacidad"></div><br><br>-->
         
-        <input type="submit" value="Enviar" onclick="usarAjax()"/><br><br>
+        <input type="submit" value="Enviar" onclick="verOR()" /><br><br>
 	</fieldset>
-</form>
+
 	
-	<!-- Generar lo de debajo con ajax 
-	<div id="contenedor">
+	 
+	<div  id="contenedor">
 		<h3>Aulas disponibles</h3>
-		<div id="aulas" name="aulas"></div>
+		<div id="aulas" name="aulas" ></div>
 	</div>
-	-->
+
 	
 </body>
 </html>
