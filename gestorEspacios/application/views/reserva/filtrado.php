@@ -1,7 +1,7 @@
 <html>
 <head>
-<!--<script type="text/javascript" src="http://form-serialize.googlecode.com/svn/trunk/serialize-0.2.min.js" ></script>
--->
+<script type="text/javascript" src="http://form-serialize.googlecode.com/svn/trunk/serialize-0.2.min.js" ></script>
+
  <script >
 	
 var conexion;
@@ -10,19 +10,19 @@ function accionAJAX() {
 	document.getElementById("aulas").innerHTML=conexion.responseText;
 }
 
-
-	
 	function verOR() {
 		
 		var categoria=document.getElementById('categoria').value;
 		var red=document.getElementById('red').value;
 		var proyector=document.getElementById('proyector').value;
+		var equipos= document.getElementById('equipos').value;
+		var capacidad= document.getElementById('capacidad').value;
 		conexion = new XMLHttpRequest();
 		
 		conexion.open('POST', '<?= base_url('reserva/filtrarPost')?>', true);
 		conexion.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		conexion.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
-		conexion.send('categoria='+categoria+"&red="+red+"&proyector="+proyector);
+		conexion.send('categoria='+categoria+"&red="+red+"&proyector="+proyector+"&equipos="+equipos+"&capacidad="+capacidad);
 	
 		
 		conexion.onreadystatechange = function() {
@@ -31,16 +31,11 @@ function accionAJAX() {
 			}
 		}
 	}
-	
-
-
-
-
 		
 </script>  
 	<meta charset="utf-8">
    
-<!--     <style type="text/css">
+     <style type="text/css">
         fieldset
         {
             width: 150px;
@@ -59,7 +54,7 @@ function accionAJAX() {
   	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
  
-<!--  	<script>
+	<script>
   	$(function() {
     	$( "#sliderEquipos" ).slider({
      		value:0,
@@ -84,7 +79,7 @@ function accionAJAX() {
     	$( "#capacidad" ).val($( "#sliderCapacidad" ).slider( "value" ) );
   	});
 
-  	</script>-->
+  	</script>
 </head>
 <body>
 
@@ -102,7 +97,7 @@ function accionAJAX() {
 		
         Red <input type="checkbox" name="red" id="red" /><br>
 		Proyector <input type="checkbox" name="proyector" id="proyector" />
-         <!-- 
+        
 		<p>
   			<label for="equipos">N&uacute;mero de equipos:</label>
   			<input type="text" id="equipos" name="equipos" readonly style="border:0; color:#f6931f; font-weight:bold;">
@@ -115,7 +110,7 @@ function accionAJAX() {
   			<input type="text" id="capacidad" name="capacidad" readonly style="border:0; color:#f6931f; font-weight:bold;">
 		</p>
  
-		<div id="sliderCapacidad"></div><br><br>-->
+		<div id="sliderCapacidad"></div><br><br>
         
         <input type="submit" value="Enviar" onclick="verOR()" /><br><br>
 	</fieldset>
