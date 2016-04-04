@@ -1,0 +1,10 @@
+#fecha2{
+   visibility: hidden;
+}
+.reservando {
+   background: blue;
+}
+    
+.reservado{
+   background: #F00;  
+}

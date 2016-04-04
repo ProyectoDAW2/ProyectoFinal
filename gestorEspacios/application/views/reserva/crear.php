@@ -2,16 +2,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-.reservando {
-   background: blue;
-}
-    
-.reservado{
-   background: #F00;  
-}
-</style><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<link rel="stylesheet" href="<?= base_url() ?>assets/css/reserva/crear.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/jquery/jquery-ui-1.11.4.custom/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="<?= base_url() ?>assets/jquery/jqueryGeneral/jquery-2.1.4.js"></script>
+<script src="<?= base_url() ?>assets/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+<script src="<?= base_url() ?>assets/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<script src="<?= base_url() ?>assets/js/reserva/traduccionEspanyol.js"></script>
+<script src="<?= base_url() ?>assets/js/reserva/diasFestivos.js"></script>
+
+
 <script>
 $(function reservandoHoras() {
 	  $('td').click( function() {
@@ -26,6 +27,41 @@ $(function reservandoHoras() {
 	  } );
 	} );
 
+$(function () {
+
+    datepickerModelado("#fecha");
+    
+    $("#mes").on("click", function () {
+        $("#fecha2").css("visibility", "visible");
+        datepickerModelado("#fecha2");
+    })
+    $("#anyo").on("click", function () {
+        $("#fecha2").css("visibility", "visible");
+        datepickerModelado("#fecha2");
+    })
+    $("#dia").on("click",function (){
+        $("#fecha2").datepicker( "destroy" );
+        $("#fecha2").css("visibility", "hidden");
+    })
+    $.datepicker.setDefaults($.datepicker.regional['es']); //Traduccion Español
+
+//FUNCION PARA EL COMPORTAMIENTO DE LOS DATEPICKER
+    function datepickerModelado(elDatepicker) {
+        $(elDatepicker).datepicker({
+            minDate: new Date(),
+            buttonImage: "<?= base_url() ?>assets/imagenes/reserva/button-calendar.gif",
+            buttonImageOnly: true,
+            buttonText: "Abre el calendario",
+            showOn: "both",
+            beforeShowDay: noWeekendsOrHolidays,
+            beforeShowDay: vacaciones,
+            numberOfMonths: 2,
+            showButtonPanel: true
+
+        })
+    };
+});
+
 </script>
 </head>
 <body>
@@ -33,7 +69,19 @@ $(function reservandoHoras() {
 <form action="<?=base_url('reserva/crearPost')?>" method="post">
 	<input type="text" name="idUsuario" value="<?= $idUsuario ?>" hidden><br>
 	<label>idObjeto Reservable</label> <input type="text" name="idOR"><br>
-	<label>Fecha</label> <input type="date" name="fecha"><br>
+	<label>Fecha</label>        
+	<input type="text" id="fecha">
+    <input type="text" id="fecha2">
+    <br>
+    <input type="button" value="dia" id="dia">
+    <input type="button" value="3 dias" id="3dias">
+    <input type="button" value="mes" id="mes">
+    <input type="button" value="a&ntilde;o" id="anyo">
+
+	 <br>
+	 <br>
+	  <br>
+	
 <label>Hora</label> <input type="text" name="hora" id="horaCogida" onchange="function reservandoHoras()"><br>
 <table id="tablaHoraria" border="1">
 		<tr><td>Horas</td><td>Lunes</td><td>Martes</td><td>Miércoles</td><td>Jueves</td><td>Viernes</td></tr>

@@ -2,10 +2,13 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <link rel="stylesheet" href="assets/login/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/login/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/login/css/form-elements.css">
-    <link rel="stylesheet" href="assets/login/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/login/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/login/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/login/css/form-elements.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/login/css/style.css">
+    
+    
+    
 </head>
 <body>
         <div class="top-content">
