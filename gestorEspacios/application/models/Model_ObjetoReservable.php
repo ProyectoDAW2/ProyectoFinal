@@ -47,14 +47,49 @@ class Model_ObjetoReservable extends RedBean_SimpleModel{
 		return R::getAll("SELECT DISTINCT categoria FROM objetoreservable");
 	}
 	
-	//public function getAulasDisponibles($categoria, $red, $proyector, $numEquipos, $capacidad)
-	public function getAulasDisponibles($categoria, $red, $proyector)
+	public function getAulasDisponibles($categoria, $red, $proyector, $numEquipos, $capacidad)
 	{
-		return R::findLike('objetoreservable',  [
+		/*return R::findLike('objetoreservable',  [
 				'categoria' => $categoria,
 				'red' => $red,
 				'proyector'=>$proyector
-		] );
+		] );*/
+		
+		/*Con getAll, aunque devuelve un array multidimensional, nos permite seleccionar
+		 * un campo concreto en la select. Así, evitamos que devuelve el objeto entero y es más
+		 * sencillo a la hora de visualizarlo*/
+		
+		/*Comprobamos que, si red o proyector están a no (es decir, no los han checkeado)
+		 * no hace falta buscar por ellos, dado que al usuario no le importa que haya o no, puesto
+		 * que solo le interesa que tenga lo que él ha marcado*/
+		
+		if($red!='SI' && $proyector!='SI')
+		{
+			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
+				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
+				array(':cat' => $categoria, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
+		}
+		else if($red!='SI' && $proyector == 'SI')
+		{
+			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
+				AND proyector = :proyector
+				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
+				array(':cat' => $categoria, ':proyector' => $proyector, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
+		}
+		else if($red=='SI' && $proyector!='SI')
+		{
+			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
+				AND red = :red
+				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
+				array(':cat' => $categoria, ':red' => $red, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
+		}
+		else 
+		{
+			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
+				AND red = :red AND proyector = :proyector
+				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
+				array(':cat' => $categoria, ':red' => $red, ':proyector' => $proyector, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
+		}
 		
 		
 	}
