@@ -2,31 +2,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<style type="text/css">
-.reservando {
-   background: blue;
-}
-    
-.reservado{
-   background: #F00;  
-}
-</style><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<style type="text/css" src="assets/css/reservandoHoras.css"></style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script>
-$(function reservandoHoras() {
-	  $('td').click( function() {
-	    $(this).toggleClass("reservando");
-	    var horas=document.getElementsByClassName("reservando");
-	    var horasCogidas="";
-	    for(i=0;i<horas.length;i++)
-	    {
-	        horasCogidas+=(horas[i].id)+"--";
-	        document.getElementById("horaCogida").value=horasCogidas;
-	    }
-	  } );
-	} );
+<script src="assets/jquery/reservandoHoras.js"></script>
 
-</script>
 </head>
 <body>
 <h1>Crear Reserva</h1>
