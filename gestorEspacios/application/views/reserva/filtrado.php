@@ -1,85 +1,21 @@
 <html>
 <head>
-<script type="text/javascript" src="http://form-serialize.googlecode.com/svn/trunk/serialize-0.2.min.js" ></script>
-
- <script >
-	
-var conexion;
-
-function accionAJAX() {
-	document.getElementById("aulas").innerHTML=conexion.responseText;
-}
-
-	function verOR() {
-		
-		var categoria=document.getElementById('categoria').value;
-		var red=document.getElementById('red').value;
-		var proyector=document.getElementById('proyector').value;
-		var equipos= document.getElementById('equipos').value;
-		var capacidad= document.getElementById('capacidad').value;
-		conexion = new XMLHttpRequest();
-		
-		conexion.open('POST', '<?= base_url('reserva/filtrarPost')?>', true);
-		conexion.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-		conexion.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
-		conexion.send('categoria='+categoria+"&red="+red+"&proyector="+proyector+"&equipos="+equipos+"&capacidad="+capacidad);
-	
-		
-		conexion.onreadystatechange = function() {
-			if (conexion.readyState==4 && conexion.status==200) {
-				accionAJAX();
-			}
-		}
-	}
-		
-</script>  
-	<meta charset="utf-8">
-   
-     <style type="text/css">
-        fieldset
-        {
-            width: 150px;
-            float:left;
-            margin-right: 50px;
-        }
-        #contenedor
-        {
-        	
-        	float:left;
-        }
-    </style>
-    
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
   	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  	
+  	<!-- Añadimos los estilos de la pantalla de filtrar -->
+  	<link rel="stylesheet" href="<?= base_url() ?>assets/css/reserva/filtrar.css" type="text/css">
+
+	<script type="text/javascript" src="http://form-serialize.googlecode.com/svn/trunk/serialize-0.2.min.js" ></script>
+
+	<!-- Añadimos el código javascript de filtrar -->
+ 	<script src="<?= base_url() ?>assets/js/reserva/filtrar.js" type="text/javascript"></script>  
  
-	<script>
-  	$(function() {
-    	$( "#sliderEquipos" ).slider({
-     		value:0,
-      		min: 0,
-      		max: 50,
-      		step: 5,
-      		slide: function( event, ui ) {
-        	$( "#equipos" ).val(ui.value );
-      		}
-    	});
-    	$( "#equipos" ).val($( "#sliderEquipos" ).slider( "value" ) );
+	<meta charset="utf-8">
 
-    	$( "#sliderCapacidad" ).slider({
-     		value: 10,
-      		min: 10,
-      		max: 200,
-      		step: 10,
-      		slide: function( event, ui ) {
-        	$( "#capacidad" ).val(ui.value );
-      		}
-    	});
-    	$( "#capacidad" ).val($( "#sliderCapacidad" ).slider( "value" ) );
-  	});
+  	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 
-  	</script>
 </head>
 <body>
 
