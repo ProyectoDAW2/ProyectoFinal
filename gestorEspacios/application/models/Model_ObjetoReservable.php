@@ -62,30 +62,31 @@ class Model_ObjetoReservable extends RedBean_SimpleModel{
 		/*Comprobamos que, si red o proyector están a no (es decir, no los han checkeado)
 		 * no hace falta buscar por ellos, dado que al usuario no le importa que haya o no, puesto
 		 * que solo le interesa que tenga lo que él ha marcado*/
+		echo $categoria;
 		
 		if($red!='SI' && $proyector!='SI')
 		{
-			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
+			return R::getAll('select num_aula from objetoreservable where categoria= :cat 
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
 				array(':cat' => $categoria, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
 		}
 		else if($red!='SI' && $proyector == 'SI')
 		{
-			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
+			return R::getAll('select num_aula from objetoreservable where categoria= :cat 
 				AND proyector = :proyector
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
 				array(':cat' => $categoria, ':proyector' => $proyector, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
 		}
 		else if($red=='SI' && $proyector!='SI')
 		{
-			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
+			return R::getAll('select num_aula from objetoreservable where categoria= :cat 
 				AND red = :red
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
 				array(':cat' => $categoria, ':red' => $red, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
 		}
 		else 
 		{
-			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
+			return R::getAll('select num_aula from objetoreservable where categoria= :cat 
 				AND red = :red AND proyector = :proyector
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
 				array(':cat' => $categoria, ':red' => $red, ':proyector' => $proyector, ':equipos' => $numEquipos, ':capacidad' => $capacidad));

@@ -88,7 +88,7 @@ class Reserva extends CI_Controller
 	
 	public function filtrarPost()
 	{
-		$categoria= "= "+$_REQUEST['categoria'];
+		$categoria= "";
 		//$red= isset($_REQUEST['red']) ? $_REQUEST['red']:'NO';
 		$red= $_REQUEST['red'];
 		$proyector= $_REQUEST['proyector'];
@@ -96,9 +96,14 @@ class Reserva extends CI_Controller
 		$numEquipos= $_REQUEST['equipos'];
 		$capacidad= $_REQUEST['capacidad'];
 		
-		if($categoria!='todas')
+		echo $_REQUEST['categoria'];
+		if($_REQUEST['categoria']!='todas')
 		{
-			$categoria= 'IS NOT NULL';
+			$categoria= $_REQUEST['categoria'];
+		}
+		else 
+		{
+			$categoria= 'is not null';
 		}
 		
 		if($red!='NO')

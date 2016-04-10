@@ -27,7 +27,7 @@ function accionAJAX() {
 		conexion.open('POST', "http://localhost/ProyectoFinCurso/gestorEspacios/reserva/filtrarPost", true);
 		conexion.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		conexion.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
-		conexion.send('categoria='+categoria+"&red="+red+"&proyector="+proyector+"&equipos="+equipos+"&capacidad="+capacidad);
+		conexion.send("categoria="+categoria+"&red="+red+"&proyector="+proyector+"&equipos="+equipos+"&capacidad="+capacidad);
 	
 		
 		conexion.onreadystatechange = function() {

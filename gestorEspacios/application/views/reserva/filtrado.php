@@ -23,7 +23,7 @@
 		<h3>Filtrado</h3>
 		Categor&iacute;a 
 		<select name="categoria" id="categoria">
-			<option value="todas">Todas</option>
+			<option value="todas" selected>Todas</option>
 			<?php foreach ($categorias as $categoria):?>
 				<?php foreach($categoria as $categ=>$nombre): ?>
 					<option value="<?= $nombre ?>"><?= $nombre ?></option>
