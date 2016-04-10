@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="<?= base_url() ?>assets/css/reserva/crear.css">
-<link rel="stylesheet" href="<?= base_url() ?>assets/jquery/jquery-ui-1.11.4.custom/jquery-ui.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/css/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="<?= base_url() ?>assets/jquery/jqueryGeneral/jquery-2.1.4.js"></script>
@@ -25,7 +25,7 @@ $(function reservandoHoras() {
 	        document.getElementById("horaCogida").value=horasCogidas;
 	    }
 	  } );
-	} );
+} );
 
 $(function () {
 
@@ -57,9 +57,9 @@ $(function () {
             beforeShowDay: vacaciones,
             numberOfMonths: 2,
             showButtonPanel: true
-
         })
     };
+  
 });
 
 </script>
@@ -70,8 +70,8 @@ $(function () {
 	<input type="text" name="idUsuario" value="<?= $idUsuario ?>" hidden><br>
 	<label>idObjeto Reservable</label> <input type="text" name="idOR"><br>
 	<label>Fecha</label>        
-	<input type="text" id="fecha">
-    <input type="text" id="fecha2">
+	<input type="text" name="fecha" id="fecha">
+    <input type="text" name="fecha2" id="fecha2">
     <br>
     <input type="button" value="dia" id="dia">
     <input type="button" value="3 dias" id="3dias">
@@ -82,7 +82,7 @@ $(function () {
 	 <br>
 	  <br>
 	
-<label>Hora</label> <input type="text" name="hora" id="horaCogida" onchange="function reservandoHoras()"><br>
+<label>Hora</label> <input type="text" name="horaCogidas" id="horaCogida" onchange="function reservandoHoras()"><br>
 <table id="tablaHoraria" border="1">
 		<tr><td>Horas</td><td>Lunes</td><td>Martes</td><td>Miércoles</td><td>Jueves</td><td>Viernes</td></tr>
 		<tr><td id="0.0">8:20-9:15</td><td name="hora" id="8:20"></td><td name="hora" id="8:20"></td><td name="hora" id="8:20"></td><td name="hora" id="8:20" value="miau"></td><td name="hora" id="8:20"></td></tr>
