@@ -20,7 +20,7 @@ class Model_Reserva extends RedBean_SimpleModel{
 		foreach($reservasOR as $reservaOR){
 			if($reservaOR->fecha==$fecha&&$reservaOR->hora==$hora){
 				$reservaExiste=true;
-			}	
+			}
 		}
 		if($reservaExiste==false){
 			R::store($reserva);
@@ -31,7 +31,6 @@ class Model_Reserva extends RedBean_SimpleModel{
 			
 		}
 	}
-
 
 	public function borrar($id)
 	{
@@ -46,7 +45,12 @@ class Model_Reserva extends RedBean_SimpleModel{
 	
 		$reserva  =  R::find( 'reserva', ' usuario_id LIKE ? ',[$idUsuario]);
 		return $reserva;
+	}
+	
+	public function getTodasReservas($idAula){
 
+		$reserva  =  R::find( 'reserva', ' or_id LIKE ? ',[$idAula]);
+		return $reserva;
 	}
 	
 	//Se le llama para saber horas y aulas reservadas

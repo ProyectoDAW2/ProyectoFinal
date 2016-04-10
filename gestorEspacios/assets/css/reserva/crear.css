@@ -1,10 +1,9 @@
 #fecha2{
    visibility: hidden;
 }
-.reservando {
-   background: blue;
+.reservando{
+	background: #88d2ff;
 }
-    
 .reservado{
-   background: #F00;  
+	background: #f54747;
 }

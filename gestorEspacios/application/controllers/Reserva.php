@@ -12,25 +12,49 @@ class Reserva extends CI_Controller
 		$this->load->view('Reserva/crear', $datos);
 	}
 	
-	public function crearPost(){
-		$idUsuario=$_REQUEST ['idUsuario'];
-
-		$idOR=$_REQUEST ['idOR'];
-		$fecha=$_REQUEST ['fecha'];
-		$hora=$_REQUEST ['hora'];
-		$this->load->model('Model_Reserva','mr');
-		$reserva=$this->mr->crear($idUsuario,$idOR,$fecha,$hora);
-		
-		if($reserva==false){
-		$this->load->view('reserva/crearPostIncorrecto');
-		}
-		else{
-		$this->load->view('reserva/crearPostCorrecto');
-		}
+	//CREO UN LISTAR PARA HACER UNA PRUEBA CON FIND, ES NECESARIO SABER EL ID PARA PASÁRSELO A LISTARPOST
+	public function listar(){
+		$this->load->view('reserva/listar');
+	}
+	
+	//Vamos a hacer una lista de reserva por aula para luego recogerlo en el horario.
+	public function listarReserva(){
+		$this->load->view('reserva/listarReserva');
 	}
 	
 	public function borrar(){
 		$this->load->view('reserva/borrar');
+	}
+	
+	public function filtrar()
+	{
+		$this->load->model('Model_ObjetoReservable', 'mo');
+		$categorias= $this->mo->getCategoria();
+		$datos['categorias']= $categorias;
+		$this->load->view('reserva/filtrado', $datos);
+	}
+	
+	public function crearPost(){
+		$idUsuario=$_REQUEST ['idUsuario'];
+		$idOR=$_REQUEST ['idOR'];
+		$fecha=$_REQUEST ['fecha'];
+		//La segunda fecha la cojo para poder construir el segundo "calendario". 
+		//Este calendario tendrá todos los días dados en un rango de fechas y las horas que tiene.
+		$fecha2=$_REQUEST ['fecha2'];
+		$horaCogida=$_REQUEST ['horaCogidas'];
+		$hora=explode("--",$horaCogida);
+	//Cuando se coge más de una hora de reserva, se hacen tantas reservas como horas se cojan
+	for($i=0;$i<(count($hora)-1);$i++)
+	{
+		$this->load->model('Model_Reserva','mr');
+		$reserva=$this->mr->crear($idUsuario,$idOR,$fecha,$hora[$i]);
+		if($reserva==false){
+			$this->load->view('reserva/crearPostIncorrecto');
+		}
+		else{
+			$this->load->view('reserva/crearPostCorrecto');
+		}
+	}
 	}
 	
 	public function borrarPost(){
@@ -41,13 +65,7 @@ class Reserva extends CI_Controller
 		$this->mr->borrar($id);
 		$this->load->view('reserva/borrarPost');
 	}
-	
-	
-	//CREO UN LISTAR PARA HACER UNA PRUEBA CON FIND, ES NECESARIO SABER EL ID PARA PASÁRSELO A LISTARPOST
-	public function listar(){
-		$this->load->view('reserva/listar');
-	}
-	
+
 	public function listarPost()
 	{
 		$idUsuario=$_REQUEST ['idUsuario'];
@@ -57,14 +75,15 @@ class Reserva extends CI_Controller
 	
 		$this->load->view('reserva/listarPost', $datos);
 	}
-	
-	public function filtrar()
-	{
-		$this->load->model('Model_ObjetoReservable', 'mo');
-		$categorias= $this->mo->getCategoria();
-		$datos['categorias']= $categorias;
-		$this->load->view('reserva/filtrado', $datos);
 		
+	public function listarReservaPost()
+	{
+		$idAula=$_REQUEST ['idAula'];
+		$this->load->model('Model_Reserva', 'mr');
+		$reservas= $this->mr->getTodasReservas($idAula);
+		$datos['reservas']= $reservas;
+	
+		$this->load->view('reserva/listarReservaPost', $datos);
 	}
 	
 	public function filtrarPost()
