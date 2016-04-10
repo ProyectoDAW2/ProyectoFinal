@@ -57,7 +57,6 @@
 		<h3>Aulas disponibles</h3>
 		<div id="aulas" name="aulas" ></div>
 	</div>
-
 	
 </body>
 </html>

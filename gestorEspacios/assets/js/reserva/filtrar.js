@@ -7,8 +7,19 @@ function accionAJAX() {
 	function verOR() {
 		
 		var categoria=document.getElementById('categoria').value;
-		var red=document.getElementById('red').value;
-		var proyector=document.getElementById('proyector').value;
+		var red= "NO";
+		var proyector= "NO";
+		
+		if(document.getElementById('red').checked)
+		{
+			red=document.getElementById('red').value;
+		}
+		
+		if(document.getElementById('proyector').checked)
+		{
+			proyector= document.getElementById('proyector').value;
+		}
+		
 		var equipos= document.getElementById('equipos').value;
 		var capacidad= document.getElementById('capacidad').value;
 		conexion = new XMLHttpRequest();
