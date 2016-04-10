@@ -89,21 +89,18 @@ class Reserva extends CI_Controller
 	public function filtrarPost()
 	{
 		$categoria= "";
-		//$red= isset($_REQUEST['red']) ? $_REQUEST['red']:'NO';
 		$red= $_REQUEST['red'];
 		$proyector= $_REQUEST['proyector'];
-		//$proyector= isset($_REQUEST['proyector']) ? $_REQUEST['proyector']:'NO';
 		$numEquipos= $_REQUEST['equipos'];
 		$capacidad= $_REQUEST['capacidad'];
 		
-		echo $_REQUEST['categoria'];
 		if($_REQUEST['categoria']!='todas')
 		{
 			$categoria= $_REQUEST['categoria'];
 		}
 		else 
 		{
-			$categoria= 'is not null';
+			$categoria= 'IS NOT NULL';
 		}
 		
 		if($red!='NO')
@@ -119,7 +116,7 @@ class Reserva extends CI_Controller
 		
 		$this->load->model('Model_ObjetoReservable', 'mo');
 		$resultado= $this->mo->getAulasDisponibles($categoria, $red, $proyector, $numEquipos, $capacidad);
-	
+		
 		$datos['aulas']= $resultado;
 		$this->load->view('reserva/filtradoPost', $datos); 
 		

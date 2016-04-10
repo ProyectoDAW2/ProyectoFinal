@@ -62,9 +62,40 @@ class Model_ObjetoReservable extends RedBean_SimpleModel{
 		/*Comprobamos que, si red o proyector están a no (es decir, no los han checkeado)
 		 * no hace falta buscar por ellos, dado que al usuario no le importa que haya o no, puesto
 		 * que solo le interesa que tenga lo que él ha marcado*/
-		echo $categoria;
 		
-		if($red!='SI' && $proyector!='SI')
+		/*Estamos comprobando también si la categoría a filtrar es todas, ya que la consulta tiene que ser
+		 * algo "especialita", por ahora la dejaremos con esta cantidad de if, porque no puedo
+		 * reutilizar la misma estructura, así que he tenido que añadir 4 if más. En el futuro, si 
+		 * descubro una manera de unificarlo, mejor.*/
+		
+		if($categoria=="IS NOT NULL" && $red!='SI' && $proyector!='SI')
+		{
+			return R::getAll('select num_aula from objetoreservable where categoria is not null
+				AND num_equipos >= :equipos AND capacidad >= :capacidad',
+					array(':equipos' => $numEquipos, ':capacidad' => $capacidad));
+		}
+		else if($categoria=="IS NOT NULL" && $red!='SI' && $proyector=='SI')
+		{
+			return R::getAll('select num_aula from objetoreservable where categoria is not null
+				AND proyector = :proyector
+				AND num_equipos >= :equipos AND capacidad >= :capacidad',
+					array(':proyector' => $proyector, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
+		}
+		else if($categoria=="IS NOT NULL" && $red=='SI' && $proyector!='SI')
+		{
+			return R::getAll('select num_aula from objetoreservable where categoria is not null
+				AND red = :red
+				AND num_equipos >= :equipos AND capacidad >= :capacidad',
+					array(':red' => $red, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
+		}
+		else if($categoria=="IS NOT NULL" && $red=='SI' && $proyector=='SI')
+		{
+			return R::getAll('select num_aula from objetoreservable where categoria is not null
+				AND red = :red AND proyector = :proyector
+				AND num_equipos >= :equipos AND capacidad >= :capacidad',
+					array(':red' => $red, ':proyector' => $proyector, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
+		}
+	    else if($red!='SI' && $proyector!='SI')
 		{
 			return R::getAll('select num_aula from objetoreservable where categoria= :cat 
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
