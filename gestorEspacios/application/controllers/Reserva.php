@@ -88,7 +88,7 @@ class Reserva extends CI_Controller
 	
 	public function filtrarPost()
 	{
-		$categoria= '= '+$_REQUEST['categoria'];
+		$categoria= "= "+$_REQUEST['categoria'];
 		//$red= isset($_REQUEST['red']) ? $_REQUEST['red']:'NO';
 		$red= $_REQUEST['red'];
 		$proyector= $_REQUEST['proyector'];

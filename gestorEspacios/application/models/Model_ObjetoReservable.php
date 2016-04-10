@@ -65,27 +65,27 @@ class Model_ObjetoReservable extends RedBean_SimpleModel{
 		
 		if($red!='SI' && $proyector!='SI')
 		{
-			return R::getAll('select num_aula from objetoreservable where categoria= :cat 
+			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
 				array(':cat' => $categoria, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
 		}
 		else if($red!='SI' && $proyector == 'SI')
 		{
-			return R::getAll('select num_aula from objetoreservable where categori= :cat 
+			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
 				AND proyector = :proyector
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
 				array(':cat' => $categoria, ':proyector' => $proyector, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
 		}
 		else if($red=='SI' && $proyector!='SI')
 		{
-			return R::getAll('select num_aula from objetoreservable where categoria= :cat 
+			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
 				AND red = :red
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
 				array(':cat' => $categoria, ':red' => $red, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
 		}
 		else 
 		{
-			return R::getAll('select num_aula from objetoreservable where categoria= :cat 
+			return R::getAll('select num_aula from objetoreservable where categoria = :cat 
 				AND red = :red AND proyector = :proyector
 				AND num_equipos >= :equipos AND capacidad >= :capacidad', 
 				array(':cat' => $categoria, ':red' => $red, ':proyector' => $proyector, ':equipos' => $numEquipos, ':capacidad' => $capacidad));
