@@ -27,7 +27,7 @@
                         	<div class="form-top">
                         		<div class="form-top-left">
                         			<h3></h3>
-                            		<p>Inserta tu usuario y contraseña para entrar:</p>
+                            		<p>Inserta tu usuario y contrase&ntilde;a para entrar:</p>
                         		</div>
                             </div>
                             <div class="form-bottom">
@@ -37,13 +37,13 @@
 			                        	<input type="text" name="user" placeholder="Usuario" class="form-username form-control" id="user">
 			                        </div>
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Contraseña</label>
-			                        	<input type="password" name="password" placeholder="Contraseña" class="form-password form-control" id="password">
+			                        	<label class="sr-only" for="form-password">Contrase&ntilde;a</label>
+			                        	<input type="password" name="password" placeholder="Contrase&ntilde;a" class="form-password form-control" id="password">
 			                        </div>
                                     <div class="form-group">
-                                        <label class="sr-only" for="form-password">Contraseña</label>
+                                        <label class="sr-only" for="form-password">Contrase&ntilde;a</label>
                                         <input type="checkbox" value="recordar" name="recordar" id="recordar"> Recordar<br>
-                                        <a href="recuperar">¿Has olvidado tus datos?</a>
+                                        <a href="recuperar">&iquest;Has olvidado tus datos?</a>
                                     </div>
                                     
 			                        <button type="submit" class="btn">Enviar</button>
