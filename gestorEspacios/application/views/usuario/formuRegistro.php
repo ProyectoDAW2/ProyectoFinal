@@ -1,64 +1,49 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <style type="text/css">
-    	fieldset
-    	{
-    		width: 50px;
-    	}
-    </style>
-    <script type="text/javascript">
-        function registrar()
-        {
-            var nickname= document.getElementById("nick").value;
-            var pass= document.getElementById("password").value;
-            var pass2= document.getElementById("password2").value;
-            var email= document.getElementById("correo").value;
-            
-            var nickCorrecto=false;
-            var passCorrecta= false;
-            var emailCorrecto= false;
-            
-            if(/^\w{3,30}$/.test(nickname))
-            {
-                nickCorrecto=true;
-            }
-            
-            if(/^(?=.*\d)(?=.*[a-zA-Z])(\W*).{6,10}$/.test(pass))
-            {
-                if(pass==pass2)
-                {
-                    passCorrecta=true;
-                }
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            }
-            
-            if(/^\w+([\-_]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email))
-            {
-                emailCorrecto=true;
-            }  
+		<!-- Añadimos los estilos css de registro -->
+        <link rel="stylesheet" href="<?= base_url() ?>assets/css/usuario/style.css">
+        
+        <!-- Añadimos fuentes de letra de google, para que quede más bonito -->
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
 
-            if(nickCorrecto && passCorrecta && emailCorrecto)
-            {
-				document.getElementById("res").value= true;
-            }   
-            
-        }
-    </script>
-</head>
-<body>
-    <h1>Formulario de registro</h1>
-    <form action="<?=base_url('usuario/registrarPost')?>" method="post">
-        <fieldset>
-            Nick <input type="text" id="nick" name="nick"/><br><br>
-            Contrase&ntilde;a <input type="password" id="password" name="password"/><br><br>
-            Repite la contrase&ntilde;a <input type="password" id="password2" name="password2"/><br><br>
-            Correo <input type="email" id="correo" name="correo"/><br><br>
-            Clave <input type="text" id="clave" name="clave"/><br><br>
-            <input type="text" id="res" name="res" hidden/>
-            
-            <input type="submit" value="Confirmar" onclick="registrar()"/>
-        </fieldset>
-    </form>
-</body>
+		<!-- Añadimos el código javascript de registro -->
+ 		<script src="<?= base_url() ?>assets/js/usuario/registro.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+
+      <form action="<?=base_url('usuario/registrarPost')?>" method="post">
+      
+        <h1>Registro</h1>
+
+          <legend><span class="number">1</span>Informaci&oacute;n Usuario</legend>
+          <label for="name">Nick:</label>
+          <input type="text" id="nick" name="nick">
+          
+          <label for="password">Contrase&ntilde;a:</label>
+          <input type="password" id="password" name="password">
+          
+          <label for="password">Repite la contrase&ntilde;a:</label>
+          <input type="password" id="password2" name="password2">
+          
+          <label for="mail">Email:</label>
+          <input type="email" id="correo" name="correo">
+
+          <legend><span class="number">2</span>Clave del centro</legend>
+          <label for="name">Clave:</label>
+          <input type="text" id="clave" name="clave">
+			
+		  <input type="text" id="res" name="res" hidden/>
+			
+        <button type="submit" onclick="registrar()">Registrarse</button>
+        
+        
+      </form>
+      
+    </body>
 </html>
+
