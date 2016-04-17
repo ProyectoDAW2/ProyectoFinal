@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Añadimos los estilos css de registro -->
-        <link rel="stylesheet" href="<?= base_url() ?>assets/css/usuario/style.css">
+        <link rel="stylesheet" href="<?= base_url() ?>assets/css/usuario/registro.css">
         
         <!-- Añadimos fuentes de letra de google, para que quede más bonito -->
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
