@@ -31,6 +31,15 @@ class Model_Reserva extends RedBean_SimpleModel{
 			
 		}
 	}
+	
+	public function crearConCalendar($fechainicio, $horas){
+		$reserva= R::dispense('reserva');
+		$reserva->fecha= $fechainicio;
+		$reserva->hora= $horas;
+		
+		R::store($reserva);
+
+	}
 
 	public function borrar($id)
 	{
@@ -50,6 +59,11 @@ class Model_Reserva extends RedBean_SimpleModel{
 	public function getTodasReservas($idAula){
 
 		$reserva  =  R::find( 'reserva', ' or_id LIKE ? ',[$idAula]);
+		return $reserva;
+	}
+	
+	public function getFechasReservas(){
+		$reserva = R::getAll("SELECT DISTINCT fecha FROM reserva");
 		return $reserva;
 	}
 	
