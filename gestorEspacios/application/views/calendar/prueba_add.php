@@ -38,7 +38,7 @@
 <body>
 <div class="container">
     <ol class="breadcrumb">
-        <li><a href="<?php echo base_url() ?>calendar">Calendario</a></li>
+        <li><a href="<?php echo base_url() ?>insertarCalendar/getAll">Calendario</a></li>
         <li><a href="<?php echo base_url() ?>insertarCalendar">A&ntilde;adir evento</a></li>
     </ol>
     <div class="row">

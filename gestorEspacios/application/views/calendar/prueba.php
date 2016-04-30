@@ -35,6 +35,17 @@
 		<div class="row">
 			<div id="calendar"></div>
 		</div>
+		
+		<!-- AQUÍ HAGO UNA PRUEBA PARA VER SI ME RECOGE LA FECHA DE LA BD, COMO ASÍ PARECE -->
+		<ul>
+		<?php foreach ($fechas as $fec): ?>
+		<?php foreach ($fec as $f): ?>
+			<li>
+			<?= $f?>
+			</li>
+			<?php endforeach;?>
+			<?php endforeach;?>
+		</ul>
 
 	</div>
     
@@ -42,7 +53,6 @@
     <script src="<?php echo base_url() ?>bower_components/bootstrap-calendar/js/calendar.js"></script>
     <script type="text/javascript">
 	(function($){
-		//creamos la fecha actual
 		var date = new Date();
 		var yyyy = date.getFullYear().toString();
 		var mm = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
@@ -137,6 +147,35 @@
 				}
 			);
 		});
+
+		$('.pull-right').each(function() 
+				{
+/*PULL-RIGHT ES EL NOMBRE DE LA CLASE DEL DIV QUE RECOGE LOS DATOS DE LA FECHA DEL CALENDARIO
+LO QUE PRETENDO ES COMPARAR CADA UNA DE LAS FECHAS DEL CALENDARIO CON LA BASE DE DATOS
+$f ES LO QUE AL COMPARARLO ME CAMBIA POR LA RESTA DE LA FECHA. PODEIS HACER UN console.log(< ? = $f?>); Y COMPROBARLO
+
+			*/
+			<?php foreach ($fechas as $fec): ?>
+			<?php foreach ($fec as $f): ?>
+			console.log(<?= $f?>);
+				if($(this).attr("data-cal-date")==<?= $f?>)
+				{
+					console.log("Hola");
+				}
+				<?php endforeach;?>
+				<?php endforeach;?>
+					
+					});
+
+		
+	
+		
+	
+
+
+
+
+		
 	}(jQuery));
     </script>
 </body>

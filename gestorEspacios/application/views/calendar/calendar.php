@@ -38,7 +38,17 @@
 		<div class="row">
 			<div id="calendar"></div>
 		</div>
+<ul>
+		<!-- AQUÍ HAGO UNA PRUEBA PARA VER SI ME RECOGE LA FECHA DE LA BD, COMO ASÍ PARECE -->
 
+		<?php foreach ($fechas as $fec): ?>
+		<?php foreach ($fec as $f): ?>
+			<li>
+			<?= $f?>
+			</li>
+			<?php endforeach;?>
+			<?php endforeach;?>
+		</ul>
 		<!--ventana modal para el calendario-->
 		<div class="modal fade" id="events-modal">
 		    <div class="modal-dialog">
@@ -93,8 +103,7 @@
 				$.each(events, function(key, val) 
 				{
 					$(document.createElement('li'))
-						.html('<a href="' + val.url + '">' + val.title + '</a>')
-						.appendTo(list);
+					
 				});
 			},
 			onAfterViewLoad: function(view) 
@@ -148,6 +157,32 @@
 				}
 			);
 		});
+
+		
+		$('.pull-right').each(function() 
+				{
+			/*PULL-RIGHT ES EL NOMBRE DE LA CLASE DEL DIV QUE RECOGE LOS DATOS DE LA FECHA DEL CALENDARIO
+			LO QUE PRETENDO ES COMPARAR CADA UNA DE LAS FECHAS DEL CALENDARIO CON LA BASE DE DATOS
+			$f ES LO QUE AL COMPARARLO ME CAMBIA POR LA RESTA DE LA FECHA. PODEIS HACER UN console.log(< ? = $f?>); Y COMPROBARLO
+			LA VARIABLE X ES SIMPLEMENTE UNA PRUEBA PARA QUE PROBEIS CON 
+			if(x==< ? = $f?>) y veais como cambia el estilo de los números < ? =$f lo pongo separado para poder hacer este comentario
+			*/			
+			
+			<?php foreach ($fechas as $fec): ?>
+			<?php foreach ($fec as $f): ?>
+			var x=1988;
+			
+				if($(this).attr("data-cal-date")==<?= $f?>)
+				{
+					console.log("hola");
+					$(this).css("color", "red");
+				}
+				<?php endforeach;?>
+				<?php endforeach;?>
+					
+					});
+
+		
 	}(jQuery));
     </script>
 </body>
