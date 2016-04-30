@@ -69,6 +69,7 @@
            <!-- Todo se guarda es save() de insertarCalendar --> 
             <input type="submit" class="posicionBoton pull-right btn btn-success" value="Guardar evento">
     	</form>
+    	<?php echo $_GET['fecha'] ?>
     </div>
     <script type="text/javascript">
         $(function () {

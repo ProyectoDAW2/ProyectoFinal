@@ -111,14 +111,7 @@
 
 		var calendar = $('#calendar').calendar(options);
 
-		$('.btn-group button[data-calendar-nav]').each(function() 
-		{
-			var $this = $(this);
-			$this.click(function() 
-			{
-				calendar.navigate($this.data('calendar-nav'));
-			});
-		});
+	
 
 		$('.btn-group button[data-calendar-view]').each(function() 
 		{
@@ -155,20 +148,33 @@ LO QUE PRETENDO ES COMPARAR CADA UNA DE LAS FECHAS DEL CALENDARIO CON LA BASE DE
 $f ES LO QUE AL COMPARARLO ME CAMBIA POR LA RESTA DE LA FECHA. PODEIS HACER UN console.log(< ? = $f?>); Y COMPROBARLO
 
 			*/
+
 			<?php foreach ($fechas as $fec): ?>
-			<?php foreach ($fec as $f): ?>
-			console.log(<?= $f?>);
-				if($(this).attr("data-cal-date")==<?= $f?>)
-				{
-					console.log("Hola");
-				}
+			<?php foreach ($fec as $f): 
+			   $anyo=date('Y',strtotime($f));
+			   $mes=date('m',strtotime($f));
+			   $dia=date('d',strtotime($f));?>
+			   
+			   var fechaEntera=<?= $anyo ?>+"-"+0+<?= $mes ?>+"-"+<?= $dia ?>;
+			   console.log(fechaEntera);
+			   console.log("ESTE ES EL THIS" +$(this).attr("data-cal-date"));
+			   
+			 
+
+
+			if($(this).attr("data-cal-date")==fechaEntera)
+			{
+				console.log("hola");
+				$(this).css("color", "red");
+			}
 				<?php endforeach;?>
 				<?php endforeach;?>
 					
 					});
 
-		
 	
+		
+
 		
 	
 

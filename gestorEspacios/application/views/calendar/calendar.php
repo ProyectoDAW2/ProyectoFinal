@@ -182,8 +182,7 @@
 					
 					});
 
-		
-	}(jQuery));
+		(jQuery));
     </script>
 </body>
 </html>
