@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/css/usuario/registro.css">
         
         <!-- Añadimos fuentes de letra de google, para que quede más bonito -->
-        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'> -->
 
 		<!-- Añadimos el código javascript de registro -->
  		<script src="<?= base_url() ?>assets/js/usuario/registro.js" type="text/javascript"></script>

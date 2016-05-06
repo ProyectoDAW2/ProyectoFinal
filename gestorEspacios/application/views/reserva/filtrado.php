@@ -1,13 +1,21 @@
 <html>
 <head>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+  	<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+  	<!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+  	
+  	<link rel="stylesheet" href="<?= base_url() ?>assets/jquery/jquery-ui-1.11.4.custom/jquery-ui.css">
+  	
+  	<script src="<?= base_url() ?>assets/jquery/jqueryGeneral/jquery-1.12.3.min.js"></script>
+	<script src="<?= base_url() ?>assets/jquery/jqueryGeneral/jquery-2.1.4.js"></script>
+	<script src="<?= base_url() ?>assets/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+	<script src="<?= base_url() ?>assets/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
   	
   	<!-- Añadimos los estilos de la pantalla de filtrar -->
   	<link rel="stylesheet" href="<?= base_url() ?>assets/css/reserva/filtrar.css" type="text/css">
 
-	<script type="text/javascript" src="http://form-serialize.googlecode.com/svn/trunk/serialize-0.2.min.js" ></script>
+	<!-- <script type="text/javascript" src="http://form-serialize.googlecode.com/svn/trunk/serialize-0.2.min.js" ></script> -->
+	<script type="text/javascript" src="<?= base_url() ?>assets/js/serialize.js" ></script>
 
 	<!-- Añadimos el código javascript de filtrar -->
  	<script src="<?= base_url() ?>assets/js/reserva/filtrar.js" type="text/javascript"></script>  

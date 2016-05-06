@@ -1155,4 +1155,11 @@ if(!String.prototype.formatNum) {
 	$.fn.calendar = function(params) {
 		return new Calendar(params, this);
 	}
+	
+	$('.pull-right').each(function() 
+			{
+		console.log("Hola");
+			}
+	);
+
 }(jQuery));
